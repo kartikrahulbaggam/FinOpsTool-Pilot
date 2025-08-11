@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadership Cost Analysis Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i>
+                    <h1>Cost Analysis Dashboard</h1>
+                </div>
+                <nav class="nav">
+                    <a href="#dashboard" class="nav-link">Dashboard</a>
+                    <a href="#analysis" class="nav-link">Cost Analysis</a>
+                    <a href="#insights" class="nav-link">Insights</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="dashboard">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Executive Cost Intelligence</h2>
+                <p>Comprehensive cost analysis and insights for strategic decision-making</p>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-dollar-sign"></i>
+                        <h3 id="totalCost">$0</h3>
+                        <p>Total Cost</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <h3 id="totalClients">0</h3>
+                        <p>Active Clients</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-boxes"></i>
+                        <h3 id="totalProducts">0</h3>
+                        <p>Product Groups</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cost Analysis Section -->
+    <section class="analysis-section" id="analysis">
+        <div class="container">
+            <h2>Cost Analysis</h2>
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="month">Month:</label>
+                    <select id="month" class="filter-select">
+                        <option value="">Select Month</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="year">Year:</label>
+                    <select id="year" class="filter-select">
+                        <option value="">Select Year</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="client">Client:</label>
+                    <select id="client" class="filter-select">
+                        <option value="">All Clients</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="productGroup">Product Group:</label>
+                    <select id="productGroup" class="filter-select">
+                        <option value="">All Product Groups</option>
+                    </select>
+                </div>
+                <button id="analyzeBtn" class="btn btn-primary">
+                    <i class="fas fa-search"></i> Analyze
+                </button>
+            </div>
+
+            <div class="results-container">
+                <div class="results-summary">
+                    <div class="summary-card">
+                        <h3>Total Cost</h3>
+                        <p id="analysisTotalCost">$0</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Transactions</h3>
+                        <p id="analysisTransactions">0</p>
+                    </div>
+                </div>
+                
+                <div class="results-table">
+                    <h3>Detailed Results</h3>
+                    <div class="table-container">
+                        <table id="resultsTable">
+                            <thead>
+                                <tr>
+                                    <th>Client Name</th>
+                                    <th>Product Group</th>
+                                    <th>Total Cost</th>
+                                    <th>Transactions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultsTableBody">
+                                <!-- Results will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insights Section -->
+    <section class="insights-section" id="insights">
+        <div class="container">
+            <h2>Key Insights</h2>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <h3>Top 10 Clients</h3>
+                    <button id="topClientsBtn" class="btn btn-secondary">
+                        <i class="fas fa-trophy"></i> View Top Clients
+                    </button>
+                    <div id="topClientsContent" class="insight-content hidden">
+                        <!-- Top clients will be populated here -->
+                    </div>
+                </div>
+                
+                <div class="insight-card">
+                    <h3>Product Group Analysis</h3>
+                    <button id="productAnalysisBtn" class="btn btn-secondary">
+                        <i class="fas fa-chart-pie"></i> View Analysis
+                    </button>
+                    <div id="productAnalysisContent" class="insight-content hidden">
+                        <!-- Product analysis will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
